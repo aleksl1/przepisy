@@ -1,0 +1,34 @@
+{% extends "recipesbase/base.html" %}
+<!-- 1 -->
+{% block title %}Recipes{% endblock %}
+<!-- 2 -->
+{% block content %}
+<div class="container">
+  <!-- Category Chips (Filter) -->
+  <div class="mb-4">
+    <div class="btn-group" role="group">
+      <a href="{% url 'index' %}" class="btn btn-outline-primary">
+        {{ "Wszystkie" }}
+      </a>
+      {% for category in categories %}
+      <a
+        href="{% url 'index' %}?category={{ category.id }}"
+        class="btn btn-outline-primary"
+      >
+        {{ category.name }}
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+  <!-- Recipe List -->
+  <ul class="list-group">
+    {% for recipe in recipes %}
+    <li class="list-group-item">
+      <a href="{% url 'recipe' recipe.id %}" class="text-decoration-none"
+        >{{ recipe.name }}</a
+      >
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}
