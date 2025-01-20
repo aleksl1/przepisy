@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Default Title{% endblock %}</title>
+    <!-- CSS Placeholder -->
+    <!-- <link rel="stylesheet" href="{% static 'css/styles.css' %}" /> -->
+    <!-- Bootstrap CSS -->
+    <!-- 1 -->
+    {% load bootstrap5 %}
+    <!-- 2 -->
+    {% bootstrap_css %}
+    <!-- 3 -->
+    {% bootstrap_javascript %}
+    <style>
+      /* Ensures the footer sticks to the bottom of the page */
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      main {
+        flex: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="bg-primary text-white py-4">
+      <div class="container">
+        <h1 class="text-center">Baza przepisów</h1>
+      </div>
+    </header>
+    <!-- Main Content -->
+    <main class="container my-5">{% block content %} {% endblock %}</main>
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-3 mt-5">
+      <div class="container text-center">
+        <p>&copy; 2025 Baza przepisów</p>
+        <p>
+          <a href="#" class="text-decoration-none text-white-50"
+            >Privacy Policy</a
+          >
+          |
+          <a href="#" class="text-decoration-none text-white-50"
+            >Terms of Service</a
+          >
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

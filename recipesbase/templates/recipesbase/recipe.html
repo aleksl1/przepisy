@@ -1,0 +1,39 @@
+{% extends "recipesbase/base.html" %}
+<!-- 1 -->
+{% block title %}{{ recipe.name }}{% endblock %}
+<!-- 2 -->
+{% block content %}
+<h1>{{ recipe.name }}</h1>
+<p><strong>Category:</strong> {{ recipe.category.name }}</p>
+
+{% if recipe.description %}
+<p><strong>Description:</strong> {{ recipe.description }}</p>
+{% endif %}
+
+<h2>Ingredients</h2>
+<ul>
+  {% for ingredient in recipe.ingredients.splitlines %}
+  <li>{{ ingredient }}</li>
+  {% endfor %}
+</ul>
+
+<h2>Instructions</h2>
+<ol>
+  {% for step in recipe.instructions.splitlines %}
+  <li>{{ step }}</li>
+  {% endfor %}
+</ol>
+
+<h2>Macros and Nutrition</h2>
+<ul>
+  <li><strong>Calories:</strong> {{ recipe.calories }} kcal</li>
+  <li><strong>Protein:</strong> {{ recipe.protein }} g</li>
+  <li><strong>Fat:</strong> {{ recipe.fat }} g</li>
+  <li><strong>Carbs:</strong> {{ recipe.carbs }} g</li>
+</ul>
+
+<p><em>Created on {{ recipe.created_at|date:"F j, Y" }}</em></p>
+<p><em>Last updated on {{ recipe.updated_at|date:"F j, Y" }}</em></p>
+
+<a href="{% url 'index' %}">Back to Recipes</a>
+{% endblock %}
